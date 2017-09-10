@@ -216,6 +216,9 @@ function letsgo(x) {
     return `abc` === a;
 }
 ```
+```
+letsgo(let=s=>s[0]);
+```
 
 ### closure
 ```
