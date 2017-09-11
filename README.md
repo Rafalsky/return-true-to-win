@@ -382,3 +382,13 @@ function calc2(s) {
     return result;
 }
 ```
+
+### total
+```
+function total(x) {
+    return (x < x) && (x == x) && (x > x);
+}
+```
+```
+total({valueOf:_=>n--%2},n=2);
+```
