@@ -216,6 +216,9 @@ function letsgo(x) {
     return `abc` === a;
 }
 ```
+```
+letsgo(let=s=>s[0]);
+```
 
 ### closure
 ```
@@ -378,4 +381,14 @@ function calc2(s) {
     while (peek()) statement();
     return result;
 }
+```
+
+### total
+```
+function total(x) {
+    return (x < x) && (x == x) && (x > x);
+}
+```
+```
+total({valueOf:_=>n--%2},n=2);
 ```
