@@ -62,7 +62,7 @@ function array(x,y) {
 }
 ```
 ```
-array(Array.prototype,{__proto__:Array.prototype});
+array(0,[Array.isArray=z=>!z]);
 ```
 
 ### instance
