@@ -248,6 +248,9 @@ function infinity(x, y) {
     return x === y && 1/x < 1/y 
 }
 ```
+```
+infinity(-0,0);
+```
 
 ### stringable
 ```
