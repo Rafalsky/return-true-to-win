@@ -62,7 +62,7 @@ function array(x,y) {
 }
 ```
 ```
-array(Array.prototype,{__proto__:Array.prototype});
+array(0,[Array.isArray=z=>!z]);
 ```
 
 ### instance
@@ -248,6 +248,9 @@ function infinity(x, y) {
     return x === y && 1/x < 1/y 
 }
 ```
+```
+infinity(-0,0);
+```
 
 ### stringable
 ```
@@ -391,4 +394,42 @@ function total(x) {
 ```
 ```
 total({valueOf:_=>n--%2},n=2);
+```
+
+### countOnMe
+```
+function countOnMe(x) {
+    if (!(x instanceof Array))
+        throw 'x must be an array.';
+
+    for (var i = 0; i < 20; i++) {
+	if (x[i] != i) {
+            throw 'x must contain the numbers 0-19 in order';
+	}
+    }
+
+    return true;
+}
+```
+```
+countOnMe([...Array(20).keys()]);
+```
+
+### countOnMe2
+```
+function countOnMe2(x) {
+    if (!(x instanceof Array))
+        throw 'x must be an array.';
+
+    for (var i = 0; i < 1000; i++) {
+	if (x[i] !== i) {
+            throw 'x must contain the numbers 0-999 in order';
+	}
+    }
+
+    return true;
+}
+```
+```
+countOnMe2([...Array(1000).keys()]);
 ```
