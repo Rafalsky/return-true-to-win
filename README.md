@@ -217,7 +217,7 @@ function letsgo(x) {
 }
 ```
 ```
-letsgo(let=s=>s[0]);
+letsgo(let=String);
 ```
 
 ### closure
