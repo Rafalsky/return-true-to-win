@@ -433,3 +433,13 @@ function countOnMe2(x) {
 ```
 countOnMe2([...Array(1000).keys()]);
 ```
+
+### length
+```
+function length(x) {
+  return typeof x !== 'object' && !Array.isArray(x) && x.length == 4
+}
+```
+```
+length(''+!0);
+```
