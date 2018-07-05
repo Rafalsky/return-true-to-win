@@ -431,7 +431,7 @@ function countOnMe2(x) {
 }
 ```
 ```
-countOnMe2([...Array(1000).keys()]);
+countOnMe2([...Array(1e3).keys()]);
 ```
 
 ### length
