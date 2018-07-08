@@ -453,3 +453,26 @@ const math101 = x => ++x[0] === -x[0]
 ```
 math101((i=0,{get'0'(){return --i%2}}));
 ```
+
+### whereAreMyKeys
+```
+Object.freeze(Object.prototype)
+
+const stringify = JSON.stringify.bind(JSON)
+
+const has = (obj, key) => key in obj
+const isEmpty = (obj) => stringify(obj) === '{}'
+const isObject = (obj) => obj.__proto__ === Object.prototype
+const isFunction = (value) => value instanceof Function
+const foolMe = (obj, key) => obj.__lookupGetter__(key)
+
+const whereAreMyKeys = (obj, key) => isObject(obj) && 
+                                     isEmpty(obj) && 
+                                     has(obj, key) && 
+                                     !isFunction(obj[key]) &&
+                                     !foolMe(obj, key)
+```
+```
+whereAreMyKeys({set 1(_){}},1);
+```
+
