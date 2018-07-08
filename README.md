@@ -433,6 +433,31 @@ function countOnMe2(x) {
 ```
 countOnMe2([...Array(1e3).keys()]);
 ```
+### countOnMe3
+```
+function countOnMe3(x) {
+  var arrayElements = 1000;
+
+  if (!(x instanceof Array))
+      throw 'x must be an Array';
+
+  for (var i = 0; i < arrayElements; i++)
+      if (x[i] != i)
+        throw 'x must contain the numbers 0-999 in order';
+
+  for (element of x)
+      if (element != --arrayElements)
+          throw 'x must contain the numbers 999-0 in order';
+
+  if (x.length !== 0)
+      throw 'x must be empty';
+
+  return true;
+}
+```
+```
+countOnMe3({__proto__:[],...[...Array(1e3).keys()]});
+```
 
 ### length
 ```
