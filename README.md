@@ -451,7 +451,7 @@ const math101 = x => ++x[0] === -x[0]
   && x[0] === 0
 ```
 ```
-math101((i=0,{get'0'(){return --i%2}}));
+math101({get 0(){return--i%2}},i=0);
 ```
 
 ### whereAreMyKeys
