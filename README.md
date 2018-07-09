@@ -120,7 +120,7 @@ function truth(x) {
 }
 ```
 ```
-truth((String.prototype.valueOf=(_=>true),''));
+truth(n=0,n.__proto__.valueOf=_=>1);
 ```
 
 ### wat
