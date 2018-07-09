@@ -130,7 +130,7 @@ function wat(x) {
 }
 ```
 ```
-wat(d=document.all,d(0).id='hello',d(0).toString=_=>'world:)');
+wat(d=document.all,(e=d(0)).id='hello',e.valueOf=_=>'world:)');
 ```
 
 ### evil1
