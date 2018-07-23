@@ -120,7 +120,7 @@ function truth(x) {
 }
 ```
 ```
-truth((String.prototype.valueOf=(_=>true),''));
+truth(n=0,n.__proto__.valueOf=_=>1);
 ```
 
 ### wat
@@ -130,7 +130,7 @@ function wat(x) {
 }
 ```
 ```
-wat(d=document.all,d(0).id='hello',d(0).toString=_=>'world:)');
+wat(d=document.all,(e=d(0)).id='hello',e.valueOf=_=>'world:)');
 ```
 
 ### evil1
@@ -431,5 +431,73 @@ function countOnMe2(x) {
 }
 ```
 ```
-countOnMe2([...Array(1000).keys()]);
+countOnMe2([...Array(1e3).keys()]);
 ```
+### countOnMe3
+```
+function countOnMe3(x) {
+  var arrayElements = 1000;
+
+  if (!(x instanceof Array))
+      throw 'x must be an Array';
+
+  for (var i = 0; i < arrayElements; i++)
+      if (x[i] != i)
+        throw 'x must contain the numbers 0-999 in order';
+
+  for (element of x)
+      if (element != --arrayElements)
+          throw 'x must contain the numbers 999-0 in order';
+
+  if (x.length !== 0)
+      throw 'x must be empty';
+
+  return true;
+}
+```
+```
+countOnMe3({__proto__:[],...[...Array(1e3).keys()]});
+```
+
+### length
+```
+function length(x) {
+  return typeof x !== 'object' && !Array.isArray(x) && x.length == 4
+}
+```
+```
+length(''+!0);
+```
+
+### math101
+```
+const math101 = x => ++x[0] === -x[0] 
+  && (x[0] *= 2) < 0 
+  && x[0] === 0
+```
+```
+math101(i={get 0(){return i=~i}});
+```
+
+### whereAreMyKeys
+```
+Object.freeze(Object.prototype)
+
+const stringify = JSON.stringify.bind(JSON)
+
+const has = (obj, key) => key in obj
+const isEmpty = (obj) => stringify(obj) === '{}'
+const isObject = (obj) => obj.__proto__ === Object.prototype
+const isFunction = (value) => value instanceof Function
+const foolMe = (obj, key) => obj.__lookupGetter__(key)
+
+const whereAreMyKeys = (obj, key) => isObject(obj) && 
+                                     isEmpty(obj) && 
+                                     has(obj, key) && 
+                                     !isFunction(obj[key]) &&
+                                     !foolMe(obj, key)
+```
+```
+whereAreMyKeys({set 1(_){}},1);
+```
+
