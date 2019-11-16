@@ -28,7 +28,7 @@ function transitive(x,y,z) {
 }
 ```
 ```
-transitive("0",0,"");
+transitive([],0,[]);
 ```
 
 
